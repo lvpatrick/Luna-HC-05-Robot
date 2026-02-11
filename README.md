@@ -29,8 +29,8 @@ HC-05/HC-06 to Arduino Connection
 
 PROBLEM:
 Arduino uses pins 0 (RX) and 1 (TX) for TWO purposes:
-- Communication with computer via USB (code uploading, Serial Monitor)
-- Communication with HC-05/HC-06 Bluetooth module
+Communication with computer via USB (code uploading, Serial Monitor)
+Communication with HC-05/HC-06 Bluetooth module
 
 ⚠️ These two cannot work simultaneously!
 
@@ -54,7 +54,7 @@ NOTE 2: Serial Monitor Limitations
 - The USB port and Bluetooth module share the same serial lines - they conflict!
 
 🔧 DEBUGGING OPTIONS:
-**Option A - Temporary Debugging:**
+Option A - Temporary Debugging:
 1. Disconnect HC-05/HC-06 TX/RX from pins 0,1
 2. Use Serial Monitor normally
 3. Reconnect Bluetooth module after debugging
@@ -73,14 +73,14 @@ void setup() {
 NOTE 3: Voltage Compatibility
 
 HC-05:
-- Operating voltage: 3.3V - 5V
-- RX pin ONLY accepts 3.3V!
-- Using 5V directly may damage the module
-- Solution: Use voltage divider or buy pre-configured module
+Operating voltage: 3.3V - 5V
+RX pin ONLY accepts 3.3V!
+Using 5V directly may damage the module
+Solution: Use voltage divider or buy pre-configured module
 HC-06:
-- Operating voltage: 3.3V - 5V
-- Can work directly with Arduino 5V pins
-- More forgiving than HC-05
+Operating voltage: 3.3V - 5V
+Can work directly with Arduino 5V pins
+More forgiving than HC-05
 
 🔧 Simple Voltage Divider for HC-05 RX:
 ```
@@ -91,10 +91,10 @@ Arduino TX (5V) ---[1KΩ]---●---[2KΩ]--- GND
 
 NOTE 4: Power Supply
 
-- Arduino 5V pin can power HC-05/HC-06 (up to ~50mA)
-- For L298N motor driver, use **SEPARATE POWER SUPPLY** (battery pack)
-- DO NOT power motors through Arduino 5V pin!
-- Common ground: Connect Arduino GND, L298N GND, and battery GND together
+Arduino 5V pin can power HC-05/HC-06 (up to ~50mA)
+For L298N motor driver, use **SEPARATE POWER SUPPLY** (battery pack)
+DO NOT power motors through Arduino 5V pin!
+Common ground: Connect Arduino GND, L298N GND, and battery GND together
 
 Control Commands
 
@@ -114,67 +114,67 @@ Control Commands
 Recommended Apps
 
 **Android:**
-- Arduino Bluetooth Controller
-- Bluetooth RC Car
-- Arduino Bluetooth RC Car
+Arduino Bluetooth Controller
+Bluetooth RC Car
+Arduino Bluetooth RC Car
 
 **iOS:**
-- Bluefruit (Adafruit)
-- LightBlue
-- HM10 Bluetooth
+Bluefruit (Adafruit)
+LightBlue
+HM10 Bluetooth
 
 Custom App:
-- MIT App Inventor (Free, easy to create your own app)
+MIT App Inventor (Free, easy to create your own app)
 
 Troubleshooting Guide
 
 1. Car Doesn't Move
 ```
-✓ Check battery/power supply
-✓ Verify L298N connections
-✓ Are ENA/ENB pins enabled? (analogWrite value > 0)
-✓ Test motors directly with battery
-✓ Check motor driver voltage
+Check battery/power supply
+Verify L298N connections
+Are ENA/ENB pins enabled? (analogWrite value > 0)
+Test motors directly with battery
+Check motor driver voltage
 ```
 
 2. Can't Connect Bluetooth
 ```
-✓ Verify TX→RX, RX→TX connections (cross connection!)
-✓ Check baud rate (try 9600 or 38400)
-✓ LED on HC-05/HC-06 should blink rapidly when not connected
-✓ LED becomes solid when connected
-✓ Try restarting Arduino and phone Bluetooth
+Verify TX→RX, RX→TX connections (cross connection!)
+Check baud rate (try 9600 or 38400)
+LED on HC-05/HC-06 should blink rapidly when not connected
+LED becomes solid when connected
+Try restarting Arduino and phone Bluetooth
 ```
 
 3. Motors Run Wrong Direction
 ```
-✓ Swap motor wires on L298N output
-✓ Or change logic in code:
-  - Move forward: IN1 HIGH, IN2 LOW
-  - Move backward: IN1 LOW, IN2 HIGH
+Swap motor wires on L298N output
+Or change logic in code:
+Move forward: IN1 HIGH, IN2 LOW
+Move backward: IN1 LOW, IN2 HIGH
 ```
 
 4. Upload Fails
 ```
 MOST COMMON ISSUE!
-✓ Did you disconnect HC-05/HC-06 TX/RX from pins 0,1?
-✓ Is the correct board and port selected?
-✓ Try pressing Arduino reset button before uploading
+Did you disconnect HC-05/HC-06 TX/RX from pins 0,1?
+Is the correct board and port selected?
+Try pressing Arduino reset button before uploading
 ```
 
 5. Erratic Movement / Noise
 ```
-✓ Add decoupling capacitors (100µF) near motor driver
-✓ Ensure common ground between all components
-✓ Separate power for motors and logic
-✓ Check wheel mounting and friction
+Add decoupling capacitors (100µF) near motor driver
+Ensure common ground between all components
+Separate power for motors and logic
+Check wheel mounting and friction
 ```
 
 6. Bluetooth Works but No Motor Control
 ```
-✓ Check L298N ENA/ENB pins - they need PWM signal!
-✓ Verify analogWrite is being called
-✓ Test with simple blink sketch first
+Check L298N ENA/ENB pins - they need PWM signal!
+Verify analogWrite is being called
+Test with simple blink sketch first
 ```
 
 📁 Code Structure
@@ -205,7 +205,7 @@ void loop() {
 }
 ```
 
-🚀 Quick Start Guide
+Quick Start Guide
 
 First Time Setup:
 1. Upload code WITHOUT connecting Bluetooth module
@@ -222,12 +222,12 @@ Every Code Update:
 4. Reconnect Bluetooth wires
 5. Ready to use
 
-📄 License
+License
 MIT License - Free to use, modify, and distribute. Attribution appreciated but not required.
 
 ---
 
-⭐ Support
+Support
 If you find this guide helpful, please give it a star on GitHub!
 
 Questions or Issues? Open an issue on GitHub or contact via email.
